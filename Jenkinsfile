@@ -21,6 +21,11 @@ pipeline {
                 echo "Testing..."
                 sh '''
                 pip install --user pytest
+                pip install --user pyautogui
+                pip install --user selenium
+                pip install --user webdriver_manager
+                pip install --user pymysql
+                
                 export PATH=$PATH:$HOME/.local/bin
                 cd testCases
                 pytest test_add_new_material.py
