@@ -22,10 +22,12 @@ pipeline {
                 sh '''
      
                 pip install --user pytest
-                pip install --user pyautogui
+                
                 pip install --user selenium
+                
                 pip install --user webdriver_manager
                 pip install --user pymysql
+                pip install --user pyautogui
                 
                 export PATH=$PATH:$HOME/.local/bin
                 cd testCases
