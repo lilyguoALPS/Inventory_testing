@@ -21,7 +21,7 @@ pipeline {
                 echo "Testing..."
                 sh '''
                 python3 -m venv venv
-                .venv/Scripts/activate
+                . venv/Scripts/activate
                 
                 pip install --user pytest
                 
