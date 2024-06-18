@@ -12,7 +12,7 @@ pipeline{
             steps{
                 echo "Building..."
                 sh '''       
-                python -m venv venv
+                python3 -m venv venv
                 . venv/Scripts/activate
                 pip install pytest
                 echo "end of Building"
