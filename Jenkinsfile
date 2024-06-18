@@ -1,39 +1,39 @@
-pipeline{
-    agent{
-        node{
+pipeline {
+    agent {
+        node {
             label 'docker-agent-python'
         }
     }
-    triggers{
-        pollSCM '*  *  *  *  *'
+    triggers {
+        pollSCM('* * * * *') // This will trigger every minute
     }
-    stages{
-        stage('Build'){
-            steps{
+    stages {
+        stage('Build') {
+            steps {
                 echo "Building..."
                 sh '''       
                 echo "end of Building"
                 '''
             }
-            }
-        stage('Test'){
-            steps{
+        }
+        stage('Test') {
+            steps {
                 echo "Testing..."
                 sh '''
-                pip install pytest
+                pip install --user pytest
+                export PATH=$PATH:$HOME/.local/bin
                 cd testCases
                 pytest test_add_new_material.py
                 '''
             }
         }
-        stage('Deliver'){
-            steps{
+        stage('Deliver') {
+            steps {
                 echo 'Deliver...'
                 sh '''
-                echo "end of Delivery
+                echo "end of Delivery"
                 '''
             }
-            
         }
     }
 }
