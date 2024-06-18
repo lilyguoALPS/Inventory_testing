@@ -12,9 +12,6 @@ pipeline{
             steps{
                 echo "Building..."
                 sh '''       
-                python3 -m venv venv
-                . venv/Scripts/activate
-                pip install pytest
                 echo "end of Building"
                 '''
             }
@@ -23,6 +20,9 @@ pipeline{
             steps{
                 echo "Testing..."
                 sh '''
+                python3 -m venv venv
+                . venv/Scripts/activate
+                pip install pytest
                 cd testCases
                 pytest test_add_new_material.py
                 '''
