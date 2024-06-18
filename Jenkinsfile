@@ -20,6 +20,9 @@ pipeline {
             steps {
                 echo "Testing..."
                 sh '''
+                sudo apt-get update
+                sudo apt-get install -y zlib1g-dev
+                
                 pip install --user pytest
                 pip install --user pyautogui
                 pip install --user selenium
