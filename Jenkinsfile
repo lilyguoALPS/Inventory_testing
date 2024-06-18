@@ -27,7 +27,7 @@ pipeline {
                 
                 pip install --user webdriver_manager
                 pip install --user pymysql
-                pip install --user pyautogui
+                
                 
                 export PATH=$PATH:$HOME/.local/bin
                 cd testCases
