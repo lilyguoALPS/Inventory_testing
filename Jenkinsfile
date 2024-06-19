@@ -5,7 +5,6 @@ pipeline{
             label "my-build-agent"
         }
         }
-    }
     triggers {
         pollSCM('* * * * *') // This will trigger every minute
     }
