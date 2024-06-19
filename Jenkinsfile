@@ -9,12 +9,6 @@ pipeline{
     }
     stages {
         stage('Install Dependenccies') {
-            agent
-            {
-                docker{
-                    image 'jenkins/jnlp-agent-python'
-                }
-            }
             steps {
                 sh '''
                 pip install -r requirements.tx
