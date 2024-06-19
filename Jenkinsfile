@@ -2,20 +2,20 @@ pipeline{
     agent{
         any
     }
-    triggers{
-        pollSCM '*  *  *  *  *'
+    triggers {
+        pollSCM('* * * * *') // This will trigger every minute
     }
-    stages{
-        stage('Build'){
-            steps{
+    stages {
+        stage('Build') {
+            steps {
                 echo "Building..."
-                sh '''                
+                sh '''       
                 echo "end of Building"
                 '''
             }
-            }
-        stage('Test'){
-            steps{
+        }
+        stage('Test') {
+            steps {
                 echo "Testing..."
                 sh '''
                 . venv/Scripts/activate
@@ -24,14 +24,13 @@ pipeline{
                 '''
             }
         }
-        stage('Deliver'){
-            steps{
+        stage('Deliver') {
+            steps {
                 echo 'Deliver...'
                 sh '''
-                echo "end of Delivery
+                echo "end of Delivery"
                 '''
             }
-            
         }
     }
 }
