@@ -12,7 +12,7 @@ pipeline{
             agent
             {
                 docker{
-                    image 'pytho:3-alpine'
+                    image 'jenkins/jnlp-agent-python'
                 }
             }
             steps {
