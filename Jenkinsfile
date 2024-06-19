@@ -1,8 +1,7 @@
 pipeline{
     agent{
-        docker{
-            image 'python:3'
-            label "my-build-agent"
+        node{
+            label "docker-agent-python"
         }
         }
     triggers {
@@ -11,7 +10,11 @@ pipeline{
     stages {
         stage('Install Dependenccies') {
             steps {
-                sh 'pip install -r requirements.txt'
+                sh '''
+                python3 -m venv venv
+                . venv/Scripts/activate
+                pip install -r requirements.tx
+                sh '''
             }
         }
         stage('Build') {
