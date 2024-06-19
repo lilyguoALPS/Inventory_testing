@@ -7,8 +7,8 @@ pipeline{
         stage('Install Dependenccies') {
             steps {
                 sh '''
-                # pip install -r requirements.txt
-                sh '''
+                echo " install"
+                '''
             }
         }
         stage('Build') {
