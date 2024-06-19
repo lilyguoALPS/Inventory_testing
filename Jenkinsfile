@@ -1,7 +1,5 @@
 pipeline{
-    agent{
-        any
-    }
+    agent any
     triggers {
         pollSCM('* * * * *') // This will trigger every minute
     }
