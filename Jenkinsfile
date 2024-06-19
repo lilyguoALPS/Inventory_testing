@@ -16,7 +16,7 @@ pipeline{
             steps {
                 echo "Testing..."
                 sh '''
-                . venv/Scripts/activate
+                .venv/Scripts/activate
                 cd testCases
                 pytest test_add_new_material.py
                 '''
