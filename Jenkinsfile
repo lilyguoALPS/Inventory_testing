@@ -9,10 +9,14 @@ pipeline{
     }
     stages {
         stage('Install Dependenccies') {
+            agentP
+            {
+                docker{
+                    image 'pytho:3-alpine'
+                }
+            }
             steps {
                 sh '''
-                python3 -m venv venv
-                . venv/Scripts/activate
                 pip install -r requirements.tx
                 sh '''
             }
