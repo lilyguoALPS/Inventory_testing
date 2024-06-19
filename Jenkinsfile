@@ -1,5 +1,9 @@
 pipeline{
-    agent any
+    agent{
+        node{
+            lable 'docker-agent-python'
+        }
+    }
     triggers {
         pollSCM('* * * * *') // This will trigger every minute
     }
