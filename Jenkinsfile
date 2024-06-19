@@ -9,7 +9,7 @@ pipeline{
     }
     stages {
         stage('Install Dependenccies') {
-            agentP
+            agent
             {
                 docker{
                     image 'pytho:3-alpine'
