@@ -7,7 +7,7 @@ pipeline{
         stage('Install Dependenccies') {
             steps {
                 sh '''
-                echo " install"
+                echo "install"
                 '''
             }
         }
