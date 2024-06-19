@@ -4,6 +4,11 @@ pipeline{
         pollSCM('* * * * *') // This will trigger every minute
     }
     stages {
+        stage('Install Dependenccies') {
+            steps {
+                sh 'pip install -r requirements.txt'
+            }
+        }
         stage('Build') {
             steps {
                 echo "Building..."
@@ -16,7 +21,7 @@ pipeline{
             steps {
                 echo "Testing..."
                 sh '''
-                . venv/Scripts/activate
+
                 cd testCases
                 pytest test_add_new_material.py
                 '''
