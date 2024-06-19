@@ -14,16 +14,25 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+import os
+
 class Test_add_new_material:
 
     baseURL = ReadConfig.getApplicationURL()
     #username = ReadConfig.getUseremail()
     username = ReadConfig.getUsername()
     password = ReadConfig.getPassword()
+    
+    curr_dir = os.path.dirname(os.path.abspath(__file__))
+    parent_dir = os.path.dirname(curr_dir)
     add_material_file = ReadConfig.getFilePath("add_material_file")
+
+    add_material_file = os.path.join(parent_dir,add_material_file)
+
 
     @pytest.mark.parametrize("name,type,unit,description",ReadData(add_material_file))
     def test_add_material_button(self,setup,name,type,unit,description):
+        
         self.driver = setup
         self.driver.get(self.baseURL)
         self.driver.maximize_window()
