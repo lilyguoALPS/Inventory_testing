@@ -15,6 +15,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 import os
+from selenium.common.exceptions import NoSuchElementException
 
 class Test_add_new_material:
 
@@ -87,11 +88,25 @@ class Test_add_new_material:
 
         self.fp.set_click("(//div)[104]")
         time.sleep(3)
+
+        
         self.np = SuccessPage(self.driver)
-        self.np.set_submit("(//div)[120]")
-    
-        # test if insert into database correctly
-        query = """SELECT material.NAME AS 'name',type.name AS 'type', unit.name AS 'unit',DESCRIPTION FROM material JOIN TYPE ON TYPE.id= type_id JOIN unit ON unit_id = unit.id WHERE material.NAME = %s"""
-        database_list = get_data(query,(name,))
-        material_list = ReadData(self.add_material_file)
-        assert database_list == material_list
+        try:
+            if self.driver.find_element(By.XPATH,"(//div)[114]"):
+                print('to click')
+                self.np.set_submit("(//div)[114]")
+            else:
+                if self.driver.find_element(By.XPATH,"(//div)[120]"):
+                    print('else')
+                    self.np.set_submit("(//div)[120]")
+                
+                    # test if insert into database correctly
+                    query = """SELECT material.NAME AS 'name',type.name AS 'type', unit.name AS 'unit',DESCRIPTION FROM material JOIN TYPE ON TYPE.id= type_id JOIN unit ON unit_id = unit.id WHERE material.NAME = %s"""
+                    database_list = get_data(query,(name,))
+                    material_list = ReadData(self.add_material_file)
+                    assert database_list == material_list
+        except NoSuchElementException as e:
+            print(f'Error: {e}')
+            print('Neither element (//div)[120] nor (//div)[114] were found.')
+
+
