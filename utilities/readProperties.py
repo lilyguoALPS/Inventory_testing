@@ -1,8 +1,19 @@
 import configparser
+import os
 
-config=configparser.RawConfigParser()
+# Get the current directory of the script
+curr_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Construct the path to the configuration file
+config_path = os.path.join(curr_dir, '..', 'Configurations', 'config.ini')
+
+# Create a ConfigParser object
+config = configparser.RawConfigParser()
+
+# Read the configuration file
+config.read(config_path)
+
 #config.read("C:\\Users\\LilyGuo\\OneDrive - ALPS Inc\\Lily_workspace\\02_Development\\Inventory-Testing-V2\\Configurations\\config.ini")
-config.read(".\\Configurations\\config.ini")
 
 class ReadConfig:
     @staticmethod
