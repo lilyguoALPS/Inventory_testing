@@ -4,6 +4,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 import pymysql
 import sys
 import os
+from selenium.webdriver.chrome.service import Service
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.dirname(SCRIPT_DIR))
@@ -13,8 +14,12 @@ from utilities.connectDatabase import Mysql
 @pytest.fixture()
 def setup():
     options = webdriver.ChromeOptions()
+
+    service = Service(ChromeDriverManager().install())
+    driver = webdriver.Chrome(service=service,options=options)
+
     #driver = webdriver.Chrome(ChromeDriverManager().install(),options=options)
-    driver = webdriver.Chrome(options=options)
+    # driver = webdriver.Chrome(options=options)  # works
     return driver
 
 @pytest.fixture()
