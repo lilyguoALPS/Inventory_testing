@@ -14,12 +14,13 @@ from utilities.connectDatabase import Mysql
 @pytest.fixture()
 def setup():
     options = webdriver.ChromeOptions()
-    chrome_driver_version = "126.0.6478.115"
-    service = Service(ChromeDriverManager(version = chrome_driver_version ).install())
-    driver = webdriver.Chrome(service=service,options=options) 
+    
+    #chrome_driver_version = "126.0.6478.115"
+    #service = Service(ChromeDriverManager(version = chrome_driver_version ).install())
+    #driver = webdriver.Chrome(service=service,options=options) 
 
     #driver = webdriver.Chrome(ChromeDriverManager().install(),options=options)
-    # driver = webdriver.Chrome(options=options)  # works
+    driver = webdriver.Chrome(options=options)  # works
     return driver
 
 @pytest.fixture()
