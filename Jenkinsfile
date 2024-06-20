@@ -4,11 +4,9 @@ pipeline {
     stages {
         stage('Prepare Environment') {
             steps {
-                script {
-                    // Print workspace path for debugging
-                    echo "Workspace: ${env.WORKSPACE}"
+                bat 'set'
+                git(url:'https://github.com/lilyguoALPS/Inventory_testing',branch:'main')
                 }
-            }
         }
         stage('Activate Virtual Environment') {
             steps {
