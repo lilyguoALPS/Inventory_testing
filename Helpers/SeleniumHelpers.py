@@ -106,8 +106,8 @@ def dropdown(driver:object, id:str, item:str):
             pyautogui.press('down') 
             pyautogui.press('enter')
             time.sleep(15)
-            pyautogui.moveTo(500,500)
-            pyautogui.click()
+            #pyautogui.moveTo(500,500)
+            #pyautogui.click()
            
         except:
             print("Cannot Find Item in Dropdown")
