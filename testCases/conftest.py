@@ -14,8 +14,8 @@ from utilities.connectDatabase import Mysql
 @pytest.fixture()
 def setup():
     options = webdriver.ChromeOptions()
-
-    service = Service(ChromeDriverManager().install())
+    chrome_driver_version = "126.0.6478.62"
+    service = Service(ChromeDriverManager(version = chrome_driver_version ).install())
     driver = webdriver.Chrome(service=service,options=options) 
 
     #driver = webdriver.Chrome(ChromeDriverManager().install(),options=options)
