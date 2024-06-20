@@ -16,7 +16,7 @@ def setup():
     options = webdriver.ChromeOptions()
 
     service = Service(ChromeDriverManager().install())
-    driver = webdriver.Chrome(service=service,options=options)
+    driver = webdriver.Chrome(service=service,options=options) 
 
     #driver = webdriver.Chrome(ChromeDriverManager().install(),options=options)
     # driver = webdriver.Chrome(options=options)  # works
