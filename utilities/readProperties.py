@@ -1,8 +1,8 @@
 import configparser
 
 config=configparser.RawConfigParser()
-config.read("C:\\Users\\LilyGuo\\OneDrive - ALPS Inc\\Lily_workspace\\02_Development\\Inventory-Testing-V2\\Configurations\\config.ini")
-#config.read(".\\Configurations\\config.ini")
+#config.read("C:\\Users\\LilyGuo\\OneDrive - ALPS Inc\\Lily_workspace\\02_Development\\Inventory-Testing-V2\\Configurations\\config.ini")
+config.read(".\\Configurations\\config.ini")
 
 class ReadConfig:
     @staticmethod
