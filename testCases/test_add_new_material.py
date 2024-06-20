@@ -63,7 +63,7 @@ class Test_add_new_material:
         input_1 = WebDriverWait(self.driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, "(//input[@id='ItmVl'])[1]"))
         )
-        self.fp.set_input_value("(//input[@id='ItmVl'])[1]", name)
+        self.fp.set_input_value(input_1), name)
 
         # Add a wait to ensure the second dropdown is interactable
         dropdown_2 = WebDriverWait(self.driver, 10).until(
