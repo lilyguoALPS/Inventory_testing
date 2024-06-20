@@ -57,7 +57,7 @@ class Test_add_new_material:
         print(self.driver.current_url)
         assert "Inventory/add-new-material" in self.driver.current_url
         
-        time.sleep(1)
+        time.sleep(5)
 
         # Set input values
         input_1 = WebDriverWait(self.driver, 10).until(
