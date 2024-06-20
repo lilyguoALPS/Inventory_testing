@@ -90,7 +90,7 @@ def dropdown_by_xpath(driver:object, xpath:str,item:str):
             pyautogui.press('down') 
             pyautogui.press('enter')
             time.sleep(15)
-            pyautogui.moveTo(500,500)
+            #pyautogui.moveTo(500,500)
             pyautogui.click()
            
         except:
