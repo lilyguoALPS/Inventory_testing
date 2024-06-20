@@ -13,13 +13,19 @@ from Helpers.ReadDatabase import get_data
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import os
 
 class Test_stock_material:
 
     baseURL = ReadConfig.getApplicationURL()
     username = ReadConfig.getUsername()
     password = ReadConfig.getPassword()
+    
+    curr_dir = os.path.dirname(os.path.abspath(__file__))
+    parent_dir = os.path.dirname(curr_dir)
     stock_material_file = ReadConfig.getFilePath("stock_material_file")
+
+    stock_material_file = os.path.join(parent_dir,stock_material_file)
 
     @pytest.mark.parametrize("material,lot_number,supplier,quantity,unit,location,stock_date,best_before",ReadData(stock_material_file))
     def test_stock_material_button(self,setup,material,lot_number,supplier,quantity,unit,location,stock_date,best_before):
@@ -60,7 +66,7 @@ class Test_stock_material:
         self.op.set_dropdown("(//div[@class='iaDropdownCommon_container iaDropdownCommon_placeholder-container ia_dropdown__placeholder'])[1]",location)
         # it doesn't succeed in setting value for the timepicker, but because it has default value, it doesn't give error
         #self.op.set_timepicker_value("(//input[contains(@placeholder,'Select date')])[2]","2025-12-12 10:55pm")
-        self.op.set_timepicker_value("(//input[@value='2025-06-11'])[1]","2025-12-12")
+        self.op.set_timepicker_value("(//input[@value='2025-06-20'])[1]","2025-12-12")
     
         
         time.sleep(10)

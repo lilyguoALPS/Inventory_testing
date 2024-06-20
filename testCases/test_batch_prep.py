@@ -14,15 +14,24 @@ from Helpers.ReadDatabase import get_data
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import os
 
 class Test_stock_material:
 
     baseURL = ReadConfig.getApplicationURL()
     username = ReadConfig.getUsername()
     password = ReadConfig.getPassword()
+
+    curr_dir = os.path.dirname(os.path.abspath(__file__))
+    parent_dir = os.path.dirname(curr_dir)
     batch_prep_file = ReadConfig.getFilePath("batch_prep_file")
+    batch_prep_file = os.path.join(parent_dir,batch_prep_file)
+
     check_batch_recipe_history = ReadConfig.getFilePath("check_batch_recipe_history")
+    check_batch_recipe_history = os.path.join(parent_dir,check_batch_recipe_history)
+
     check_extraction_history = ReadConfig.getFilePath("check_extraction_history")
+    check_extraction_history = os.path.join(parent_dir,check_extraction_history)
 
     @pytest.mark.parametrize("batch_id,recipe_type,recipe,serving",ReadData(batch_prep_file))
     def test_stock_material_button(self,setup,batch_id,recipe_type,recipe,serving):

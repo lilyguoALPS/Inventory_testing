@@ -13,13 +13,22 @@ from Helpers.ReadDatabase import get_data
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import os
 
 class Test_restock_material:
 
     baseURL = ReadConfig.getApplicationURL()
     username = ReadConfig.getUsername()
     password = ReadConfig.getPassword()
+
+    curr_dir = os.path.dirname(os.path.abspath(__file__))
+    parent_dir = os.path.dirname(curr_dir)
     restock_material_file = ReadConfig.getFilePath("restock_material_file")
+
+    restock_material_file = os.path.join(parent_dir,restock_material_file)
+
+
+    
     old_balance_on_hand = 0
 
     @pytest.mark.parametrize("material,lot_number,quantity",ReadData(restock_material_file))
