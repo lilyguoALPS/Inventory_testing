@@ -14,7 +14,8 @@ from utilities.connectDatabase import Mysql
 @pytest.fixture()
 def setup():
     options = webdriver.ChromeOptions()
-    
+    options.add_argument('--headless')
+    options.add_argument('--disable-gpu')
     #chrome_driver_version = "126.0.6478.115"
     #service = Service(ChromeDriverManager(version = chrome_driver_version ).install())
     #driver = webdriver.Chrome(service=service,options=options) 
